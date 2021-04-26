@@ -1,0 +1,47 @@
+@model IEnumerable<PouleSim.Models.Club>
+
+@{
+    ViewData["Title"] = "Poule Set Up";
+}
+
+
+<h1 class="display-4">Poule Set Up</h1>
+<p> Press the button to start a simulation with the current teams. To change teams head to "Team Set Up".</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Powerlevel)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Powerlevel)
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+@{
+    if(Model.Count() == 0)
+    {
+    <p> No teams are retrieved from the data source. Simulation will use mock teams </p>
+    }
+}
+
+<div style="padding: 10px; border: 3px solid black; max-width: 200px;">
+    <a class="nav-link text-dark" asp-area="" asp-controller="PouleSetUp" asp-action="TestPoule">Run simulation</a>
+</div>
+
+

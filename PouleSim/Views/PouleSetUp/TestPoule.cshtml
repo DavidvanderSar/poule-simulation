@@ -1,0 +1,48 @@
+@{
+    ViewData["Title"] = "Simulated Poule result";
+}
+
+<h2>Poule Result</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Club name (level)</th>
+            <th>Matches Played</th>
+            <th>Games won</th>
+            <th>Games Drawn</th>
+            <th>Games Lost</th>
+            <th>Goals For</th>
+            <th>Goals Against </th>
+            <th>Goals Aggregate </th>
+            <th>Points</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @for (int i = 0; i < (int)@ViewData["ClubCount"]; i++)
+        {
+            var pouleScoreRow = ViewData[$"PouleScoreRow{i}"] as PouleSim.Models.PouleScoreRow;
+            <tr>
+                <td> @pouleScoreRow.Club.Name (@pouleScoreRow.Club.Powerlevel) </td>
+                <td> @pouleScoreRow.MatchesPlayed </td>
+                <td> @pouleScoreRow.GamesWon </td>
+                <td> @pouleScoreRow.GamesDrawn </td>
+                <td> @pouleScoreRow.GamesLost </td>
+                <td> @pouleScoreRow.GoalsFor </td>
+                <td> @pouleScoreRow.GoalsAgainst </td>
+                <td> @pouleScoreRow.GoalsAggregate </td>
+                <td><b>@pouleScoreRow.Points</b></td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<h2>Matches Played</h2>
+
+<ul>
+    @for (int i = 0; i < (int)ViewData["MatchCount"]; i++)
+    {
+        <li>@ViewData[$"Match{i}"]</li>
+    }
+</ul>
