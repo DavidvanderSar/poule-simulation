@@ -27,7 +27,7 @@ namespace PouleSim.Utilities
             return ConvertPouleToScore(poule);
         }
 
-        private static PouleScore ConvertPouleToScore(Poule poule)
+        public static PouleScore ConvertPouleToScore(Poule poule)
         {
             PouleScore result = new PouleScore();
 
