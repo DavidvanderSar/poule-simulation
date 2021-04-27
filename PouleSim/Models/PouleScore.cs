@@ -1,3 +1,4 @@
+using PouleSim.Utilities;
 using System;
 using System.Collections.Generic;
 
@@ -15,6 +16,17 @@ namespace PouleSim.Models
 
     public class PouleScoreRow : IComparable<PouleScoreRow>
     {
+        public PouleScoreRow(Club club, Poule poule)
+        {
+            Club = club;
+            GamesWon = 0;
+            GamesDrawn = 0;
+            GamesLost = 0;
+            GoalsFor = 0;
+            GoalsAgainst = 0;
+            Poule = poule;
+        }
+
         public PouleScoreRow(Club club)
         {
             Club = club;
@@ -31,6 +43,8 @@ namespace PouleSim.Models
         public int GamesDrawn { get; set; }
         public int GoalsFor { get; set; }
         public int GoalsAgainst { get; set; }
+
+        private Poule Poule { get; set; }
 
         public int GoalsAggregate { 
             get {
@@ -66,13 +80,28 @@ namespace PouleSim.Models
             {
                 result = other.GoalsFor.CompareTo(this.GoalsFor);
             }
-            //4. Sort based on Goals Against.
-            if( result == 0 )
-            {
-                result = other.GoalsAgainst.CompareTo(this.GoalsAgainst);
-            }
+            //4. Sort based on Goals Against. // NOT POSSIBLE, INTETFERES WITH 2 + 3
+            // if( result == 0 )
+            // {
+            //     result = other.GoalsAgainst.CompareTo(this.GoalsAgainst);
+            // }
             //5. Sort based on their match result.
-            //TODO: Implement match comparison.
+            if( result == 0 && Poule != null)
+            {
+                var match = Poule.Matches.Find(match => (match.HomeClub == Club && match.AwayClub == other.Club) || (match.AwayClub == Club && match.HomeClub == other.Club));
+
+                if(match != null)
+                {
+                    if(match.MatchResult == MatchResult.Home)
+                    {
+                        return match.HomeClub == Club ? -1 : 1 ;
+                    }
+                    else if (match.MatchResult == MatchResult.Away)
+                    {
+                        return match.HomeClub == Club ? 1 : -1 ;
+                    }
+                }
+            }
 
             return result;
         }

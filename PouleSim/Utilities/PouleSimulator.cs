@@ -33,7 +33,7 @@ namespace PouleSim.Utilities
 
             foreach(Club c in poule.Clubs)
             {
-                result.PouleScoreRows.Add(new PouleScoreRow(c));
+                result.PouleScoreRows.Add(new PouleScoreRow(c,poule));
             }
 
             foreach(Match m in poule.Matches)
