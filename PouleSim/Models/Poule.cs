@@ -7,10 +7,17 @@ namespace PouleSim.Models
         public string Name { get; set; }
         public List<Match> Matches { get; set; }
 
-        public Poule()
+        public Poule(string name = "Poule")
         {
             Clubs = new List<Club>();
-            Name = "Poule";
+            Name = name;
+            Matches = new List<Match>();
+        }
+
+        public Poule(List<Club> clubs, string name = "Poule")
+        {
+            Clubs = clubs;
+            Name = name;
             Matches = new List<Match>();
         }
     }
