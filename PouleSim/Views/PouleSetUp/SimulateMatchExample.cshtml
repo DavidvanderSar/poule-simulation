@@ -1,8 +1,42 @@
+@model PouleSim.Models.Club
+
 @{
-    ViewData["Title"] = "Simulated Match result";
+    ViewData["Title"] = "Simulate Matches";
 }
 
-<h2>Welcome</h2>
+<h2>Simulate Matches</h2>
+<p> Enter two powerlevels, the amount of matches to simulate and see the results. Currently the base odds with an equal powerlevel are:</p>
+<ul>
+    <li> 40% chance the home team wins </li>
+    <li> 40% chance the away team wins </li>
+    <li> 20% chance the match ends in a tie </li>
+</ul>
+
+<h3>About scored goals</h3>
+<p> As the goal of this project was to simulate a poule tourney and to process the results, the determination of the amount of goals is not representative of actual matches. The concept behind determining the goals is as follows: </p>
+<ul>
+    <li> Always determine a random amount of base goals each team scores between 0 - 3. </li>
+    <li> Then, in case there is a winner; the winner gets an additional base 1+ goals. </li>
+    <li> Powerlevel difference increases the potential of having a bigger aggregate in goals during the match. When the winner has a lower or equal powerlevel the extra goal cap is +3; and increases with 1 for each 10 difference in powerlevel. </li>
+</ul>
+
+<h3> Entry data for match simulation</h3>
+<form asp-controller="PouleSetUp" asp-action="SimulateMatchExample">
+    <p>
+        Home Powerlevel: <input type="number" name="homeLevel" value="80" />
+    </p>
+    <p>
+        Away Powerlevel: <input type="number" name="awayLevel" value="80" />
+    </p>
+    <p>
+        Amount of Matches <input type="number" name="times" value="1000"/>
+    </p>
+    <p> 
+        <input type="submit" value="Simulate Matches" />
+    </p>
+</form>
+
+<h3> Simulation Results </h3>
 
 <p>In total, there were @ViewData["HomeWins"] home wins, @ViewData["Draws"] draws and @ViewData["AwayWins"] away wins.</p>
 

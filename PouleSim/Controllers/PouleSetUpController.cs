@@ -35,16 +35,20 @@ namespace PouleSim.Controllers
 
         // 
         // GET: /PouleSetup/EasterEgg/
-        public IActionResult SimulateMatchExample(int homeLevel, int awayLevel, int times)
+        public IActionResult SimulateMatchExample(int homeLevel = 80, int awayLevel = 80, int times = 1000)
         {
             int homeWins = 0, awayWins = 0, draws = 0;
 
-            Club testClub1 = new Club();
-            testClub1.Name = "Ajax";
-            testClub1.Powerlevel = homeLevel;
-            Club testClub2 = new Club();
-            testClub2.Name = "Feyenoord";
-            testClub2.Powerlevel = awayLevel;
+            Club testClub1 = new Club() 
+            {
+                Name = "HomeClub",
+                Powerlevel = homeLevel
+            };
+            Club testClub2 = new Club() 
+            {
+                Name = "AwayClub",
+                Powerlevel = awayLevel
+            };
 
             for(int i = 0; i < times; i++)
             {

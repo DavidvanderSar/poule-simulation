@@ -1,7 +1,7 @@
-using PouleSim.Models;
-using Xunit;
-using PouleSim.Utilities;
 using System.Collections.Generic;
+using Xunit;
+using PouleSim.Models;
+using PouleSim.Utilities;
 
 namespace PouleSim.Tests
 {
