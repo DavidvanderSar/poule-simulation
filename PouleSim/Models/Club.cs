@@ -7,7 +7,7 @@ namespace PouleSim.Models
     {
         public int Id { get; set; }
 
-        [RegularExpression(@"^[a-zA-Z0-9][a-zA-Z0-9'\s]+[a-zA-Z0-9]$")]
+        [RegularExpression(@"^[a-zA-Z0-9][a-zA-Z0-9'\s]*[a-zA-Z0-9]$")]
         [Required]
         [StringLength(30)]
         public string Name { get; set; }
