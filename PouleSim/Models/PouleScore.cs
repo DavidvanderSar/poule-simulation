@@ -80,7 +80,7 @@ namespace PouleSim.Models
             {
                 result = other.GoalsFor.CompareTo(this.GoalsFor);
             }
-            //4. Sort based on Goals Against. // NOT POSSIBLE, INTETFERES WITH 2 + 3
+            //4. Sort based on Goals Against. // NOT POSSIBLE, INTERFERES WITH 2 + 3
             // if( result == 0 )
             // {
             //     result = other.GoalsAgainst.CompareTo(this.GoalsAgainst);
